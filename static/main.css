@@ -1,0 +1,36 @@
+html, body{
+    width: 100%;
+    background-color: rgb(100, 189, 159);
+}
+
+.container{
+    width: 100%;
+    text-align: center;
+    color: darkgreen;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container h1{
+    margin-top: 200px;
+    font-weight: bolder;
+    font-size: 40px;
+}
+
+.container h3{
+    margin: 20px;
+    font-size: 20px;
+}
+
+.container form{
+    margin: 40px;
+}
+
+.container button{
+    width: 100px;
+    height: 50px;
+    color: darkgreen;
+}
+
+.container input{
+    margin: 50px;    
+}
