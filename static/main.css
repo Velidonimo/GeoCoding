@@ -8,6 +8,7 @@ html, body{
     text-align: center;
     color: darkgreen;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
 }
 
 .container h1{
@@ -46,4 +47,10 @@ html, body{
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.go_back button{
+    position: absolute;
+    right: 10%;    
+    background-color: rgba(255, 250, 205, 0.671);
 }
