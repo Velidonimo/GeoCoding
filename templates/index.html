@@ -9,7 +9,7 @@
     <div class="container">
         <h1>Coordinates finder</h1>
         <h3>Please upload your CSV file. Addresses must be in a column <i>adress</i> or <i>Address</i></h3>
-        <form action="{{ url_for('updating') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url_for('success') }}" method="POST" enctype="multipart/form-data">
             <input type="file" name="file_name" required>
             <button type="submit">Submit</button>
         </form>

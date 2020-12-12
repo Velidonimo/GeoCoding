@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, send_file
 from werkzeug.utils import secure_filename
-from threading import Thread
 from coords_finder import coords_finder
 
 
@@ -12,20 +11,14 @@ def index():
     return render_template("index.html")
 
 
-@app.route('/updating/', methods=["POST"])
-def updating():
+@app.route('/success/', methods=["POST"])
+def success():
     if request.method == "POST":
         file = request.files['file_name']
         global filename
         filename = secure_filename(file.filename)
-        thread = Thread(target=coords_finder, args=(filename, success))
-        thread.start()
-        return render_template('updating.html')
-
-
-@app.route('/success/')
-def success(done, message):
-    return render_template('success.html', data_frame=message, show_btn=done)
+        done, message = coords_finder(filename)
+        return render_template('success.html', data_frame=message, show_btn=done)
 
 
 @app.route("/file_download/")
