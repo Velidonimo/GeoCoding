@@ -11,7 +11,9 @@
         <div class="dataframe">
             {{ data_frame | safe }}
         </div>
-        <a href={{ url_for('file_download') }} target="_blank"><button class="btn">Download</button></a>
+        {% if show_btn %}
+            <a href={{ url_for('file_download') }} target="_blank"><button class="btn">Download</button></a>
+        {% endif %}
         <a href={{ url_for('index') }} class="go_back" ><button>Another file</button></a>
 
     </div>
