@@ -17,6 +17,7 @@ def success():
         file = request.files['file_name']
         global filename
         filename = secure_filename(file.filename)
+        print(filename)
         done, message = coords_finder(file)
         return render_template('success.html', data_frame=message, show_btn=done)
 
