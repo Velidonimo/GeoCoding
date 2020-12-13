@@ -15,7 +15,6 @@ def index():
 def success():
     if request.method == "POST":
         file = request.files['file_name']
-        file.headers["Cache-Control"] = "no-store, no-cache, must-revalidate"
         global filename
         filename = secure_filename(file.filename)
         done, message = coords_finder(file)
@@ -25,6 +24,7 @@ def success():
 @app.route("/file_download/")
 def file_download():
     # adding "+coords" to filename
+    global filename
     new_name = ".".join(filename.split(".")[:-1]) + "+Coords.csv"
     file_to_download = send_file("Nice.csv", attachment_filename=new_name, as_attachment=True)
     # clearing cache
