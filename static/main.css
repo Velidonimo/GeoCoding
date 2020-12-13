@@ -39,7 +39,7 @@ html, body{
 
 .dataframe{
     padding: 2px;
-
+    color: red;
 }
 
 .dataframe.table{

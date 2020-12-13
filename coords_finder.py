@@ -11,8 +11,7 @@ def coords_finder(filename):
     """
     try:
         df = pandas.read_csv(filename)
-    except Exception as e:
-        print(str(e))
+    except:
         return False, "Can't open Your file. Please ensure, You are uploading a valid .csv file"
 
     if not ("Address" in df or "address" in df):
@@ -32,7 +31,7 @@ def coords_finder(filename):
     try:
         df.to_csv('Nice.csv')
     except:
-         return False, "Can't proceed this file"
+        return False, "Can't proceed this file"
 
     return True, df.to_html(max_rows=10, max_cols=8, classes="table")
 
