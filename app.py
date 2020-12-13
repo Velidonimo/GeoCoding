@@ -4,7 +4,7 @@ from coords_finder import coords_finder
 
 
 app = Flask(__name__)
-
+filename = ""
 
 @app.route('/')
 def index():
