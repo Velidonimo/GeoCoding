@@ -3,8 +3,8 @@ from werkzeug.utils import secure_filename
 from coords_finder import coords_finder
 
 
-
 app = Flask(__name__)
+
 
 @app.route('/')
 def index():

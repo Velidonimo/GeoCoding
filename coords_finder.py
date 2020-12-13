@@ -11,15 +11,19 @@ def coords_finder(filename):
     """
     try:
         df = pandas.read_csv(filename)
-    except:
-        return False, "Can't open Your file. Please ensure, You are uploading a .csv file"
+    except Exception as e:
+        print(str(e))
+        return False, "Can't open Your file. Please ensure, You are uploading a valid .csv file"
 
     if not ("Address" in df or "address" in df):
         return False, 'No address column. Please ensure, Your file has a column "Address" or "address"'
 
-    df["coords"] = df.Address.apply(Nominatim(user_agent="agent").geocode)
-    df["Latitude"] = df.coords.apply(lambda x: x.latitude if x != None else None)
-    df["Longitude"] = df.coords.apply(lambda x: x.longitude if x != None else None)
+    def apply_address(address):
+        return Nominatim(user_agent="agent").geocode(address, timeout=None)
+
+    df["coords"] = df.Address.apply(apply_address)
+    df["Latitude"] = df.coords.apply(lambda x: x.latitude if x is not None else None)
+    df["Longitude"] = df.coords.apply(lambda x: x.longitude if x is not None else None)
 
     del df['coords']
     if "Unnamed: 0" in df:
