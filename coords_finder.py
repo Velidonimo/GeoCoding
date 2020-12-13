@@ -2,7 +2,7 @@ import pandas
 from geopy.geocoders import Nominatim
 
 
-def coords_finder(filename):
+def coords_finder(file):
     """
     Finds and adds latitude and longitude to the file. Also saves it as Nice.csv
     :param filename: a path to file
@@ -10,7 +10,7 @@ def coords_finder(filename):
              else: (False, Error string to show on page)
     """
     try:
-        df = pandas.read_csv(filename)
+        df = pandas.read_csv(file)
     except Exception as e:
         print(str(e))
         return False, "Can't open Your file. Please ensure, You are uploading a valid .csv file"
