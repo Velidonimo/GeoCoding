@@ -1,8 +1,9 @@
 # my
-virtual
 *.ipynb
 Nice.csv
 __pycache__
+Sampl*.csv
+virtual
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

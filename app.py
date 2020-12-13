@@ -15,6 +15,7 @@ def index():
 def success():
     if request.method == "POST":
         file = request.files['file_name']
+        file.headers["Cache-Control"] = "no-store, no-cache, must-revalidate"
         global filename
         filename = secure_filename(file.filename)
         done, message = coords_finder(file.filename)
