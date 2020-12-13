@@ -11,7 +11,8 @@ def coords_finder(filename):
     """
     try:
         df = pandas.read_csv(filename)
-    except:
+    except Exception as e:
+        print(str(e))
         return False, "Can't open Your file. Please ensure, You are uploading a valid .csv file"
 
     if not ("Address" in df or "address" in df):
@@ -20,7 +21,8 @@ def coords_finder(filename):
     def apply_address(address):
         return Nominatim(user_agent="agent").geocode(address, timeout=None)
 
-    df["coords"] = df.Address.apply(apply_address)
+    address = df["Address"] if "Address" in df else df["address"]
+    df["coords"] = address.apply(apply_address)
     df["Latitude"] = df.coords.apply(lambda x: x.latitude if x is not None else None)
     df["Longitude"] = df.coords.apply(lambda x: x.longitude if x is not None else None)
 
